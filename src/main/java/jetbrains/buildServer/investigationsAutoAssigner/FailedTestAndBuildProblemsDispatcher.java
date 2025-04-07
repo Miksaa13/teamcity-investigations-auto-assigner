@@ -172,8 +172,8 @@ public class FailedTestAndBuildProblemsDispatcher {
     SBuildType buildType = nextBuild.getBuildType();
     if (buildType != null) {
       Long delayedAssignmentsBuildId = myDelayedAssignments.get(buildType.getInternalId());
-      if (delayedAssignmentsBuildId == null) return;
-      if (delayedAssignmentsBuildId == nextBuild.getBuildId()) return;
+
+      if ((delayedAssignmentsBuildId == null) || (delayedAssignmentsBuildId == nextBuild.getBuildId())) return;
 
       SBuild delayedAssignmentsBuild = myBuildsManager.findBuildInstanceById(delayedAssignmentsBuildId);
       if (delayedAssignmentsBuild == null) {
@@ -185,6 +185,9 @@ public class FailedTestAndBuildProblemsDispatcher {
         myDelayedAssignments.remove(buildType.getInternalId());
         processDelayedAssignments(new FailedBuildInfo(delayedAssignmentsBuild), nextBuild);
       }
+
+
+
     }
   }
 
