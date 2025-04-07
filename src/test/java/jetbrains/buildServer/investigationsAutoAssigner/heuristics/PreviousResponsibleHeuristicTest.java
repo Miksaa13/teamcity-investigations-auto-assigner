@@ -59,7 +59,7 @@ public class PreviousResponsibleHeuristicTest extends BaseTestCase {
     when(myUser2.getUsername()).thenReturn("testUser 2");
     UserSet userSetMock = Mockito.mock(UserSet.class);
     when(userSetMock.getUsers()).thenReturn(new HashSet<>(Collections.singletonList(myUser)));
-    when(mySBuild.getCommitters(any())).thenReturn(userSetMock);
+    when(mySBuild.getCommitters(any())).thenReturn((UserSet<SUser>) userSetMock);
 
     myHeuristic = new PreviousResponsibleHeuristic(myInvestigationsManager);
     when(myBuildProblem.getBuildProblemData()).thenReturn(myBuildProblemData);
