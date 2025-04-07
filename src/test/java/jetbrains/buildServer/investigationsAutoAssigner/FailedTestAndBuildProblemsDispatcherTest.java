@@ -142,7 +142,7 @@ public class FailedTestAndBuildProblemsDispatcherTest {
     myBsDispatcher.getMulticaster().buildProblemsChanged(myBuild, Collections.emptyList(), Collections.emptyList());
     myBsDispatcher.getMulticaster()
                   .buildProblemsChanged(mySecondBuild, Collections.emptyList(), Collections.emptyList());
-    assertEquals(2, myDispatcher.getRememberedFailedBuilds().size());
+    assertEquals(myDispatcher.getRememberedFailedBuilds().size(), 2);
   }
 
   public void test_BuildFinished_PersonalBuildIgnored() {
